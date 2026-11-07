@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GCE A/L Notebooks</title>
+  <meta name="description" content="Access GCE A/L Google NotebookLM notebooks and study resources for Biology, Business Studies, Accounting, ICT, Physics, Combined Mathematics, and Chemistry." />
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --surface-2: #f1f4fb;
+      --text: #18202f;
+      --muted: #5e6a82;
+      --primary: #3457d5;
+      --primary-2: #5b7cff;
+      --accent: #17a589;
+      --border: #dfe5f2;
+      --shadow: 0 10px 30px rgba(28, 45, 90, 0.08);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #f6f8fc 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(247, 248, 252, 0.8);
+      border-bottom: 1px solid rgba(223, 229, 242, 0.9);
+    }
+
+    .topbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: var(--shadow);
+      font-size: 1.2rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .nav a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 52px 0 28px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card,
+    .illustration-card,
+    .section-card,
+    .subject-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 36px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eaf0ff;
+      color: var(--primary);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-card p {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 60ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e9eefb;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    .hero-meta span {
+      background: #f8faff;
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .illustration-card {
+      padding: 20px;
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .illustration-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at top left, #ebf1ff 0, #ebf1ff 26%, transparent 27%),
+        radial-gradient(circle at bottom right, #e7fbf6 0, #e7fbf6 22%, transparent 23%),
+        linear-gradient(135deg, #f7f9ff 0%, #eef4ff 100%);
+      display: grid;
+      place-items: center;
+      border: 1px dashed #d8e2fb;
+    }
+
+    .quick-links,
+    .subjects,
+    .resources,
+    .about {
+      padding: 18px 0 10px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 6px;
+      font-size: 1.7rem;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .quick-links-grid,
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .section-card {
+      padding: 20px;
+    }
+
+    .section-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .section-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .tiny-link {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .subject-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .subject-card {
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.2s ease;
+    }
+
+    .subject-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .subject-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .icon-bubble {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .bio { background: linear-gradient(135deg, #2e8b57, #4caf50); }
+    .biz { background: linear-gradient(135deg, #6b7280, #9ca3af); }
+    .acc { background: linear-gradient(135deg, #2563eb, #60a5fa); }
+    .ict { background: linear-gradient(135deg, #64748b, #94a3b8); }
+    .phy { background: linear-gradient(135deg, #1d4ed8, #38bdf8); }
+    .math { background: linear-gradient(135deg, #4b5563, #9ca3af); }
+    .chem { background: linear-gradient(135deg, #0284c7, #38bdf8); }
+
+    .count {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--muted);
+      background: #f8faff;
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .subject-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.18rem;
+    }
+
+    .subject-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      min-height: 46px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip-link {
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .chip-link.primary {
+      background: #eaf0ff;
+      color: var(--primary);
+      border-color: #d7e2ff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .about ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 36px 0 54px;
+      color: var(--muted);
+    }
+
+    .footer-card {
+      padding: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: #f8faff;
+      border: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .about-grid,
+      .quick-links-grid,
+      .resources-grid,
+      .subject-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .topbar-inner,
+      .nav,
+      .hero-meta,
+      .cta-row {
+        gap: 10px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .quick-links-grid,
+      .resources-grid,
+      .subject-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card,
+      .illustration-card,
+      .section-card,
+      .subject-card {
+        border-radius: 18px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <div class="brand-badge">📘</div>
+        <span>GCE A/L Notebooks</span>
+      </div>
+
+      <nav class="nav">
+        <a href="#subjects">Subjects</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">🎓 Sri Lankan A/L Learning Hub</div>
+          <h1>Google NotebookLM notebooks and study resources for A/L students</h1>
+          <p>
+            A clean and simple collection of subject notebooks, study material, source files,
+            and project links for GCE Advanced Level learners. Open a notebook, browse resources,
+            and study faster.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#subjects">Open Subject Notebooks</a>
+            <a class="btn btn-secondary" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener">Open Source Files</a>
+            <a class="btn btn-secondary" href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener">View GitHub Repo</a>
+          </div>
+
+          <div class="hero-meta">
+            <span>7 Subjects</span>
+            <span>NotebookLM + Drive + GitHub</span>
+            <span>Minimal • Functional • Student Friendly</span>
+          </div>
+        </div>
+
+        <div class="illustration-card">
+          <div class="illustration-wrap" aria-hidden="true">
+            <svg width="92%" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="90" y="120" width="250" height="180" rx="22" fill="#ffffff" stroke="#d7e2ff" stroke-width="4"/>
+              <rect x="120" y="155" width="190" height="12" rx="6" fill="#d7e2ff"/>
+              <rect x="120" y="185" width="150" height="12" rx="6" fill="#e4ecff"/>
+              <rect x="120" y="215" width="165" height="12" rx="6" fill="#e4ecff"/>
+              <rect x="120" y="245" width="125" height="12" rx="6" fill="#e4ecff"/>
+
+              <rect x="235" y="280" width="160" height="110" rx="18" fill="#eff6ff" stroke="#b7cdfc" stroke-width="4"/>
+              <circle cx="285" cy="330" r="18" fill="#5b7cff"/>
+              <path d="M316 350H360" stroke="#7d95ff" stroke-width="10" stroke-linecap="round"/>
+              <path d="M316 324H350" stroke="#7d95ff" stroke-width="10" stroke-linecap="round"/>
+
+              <circle cx="118" cy="365" r="48" fill="#e7fbf6" stroke="#b6ecdf" stroke-width="4"/>
+              <path d="M97 367L113 383L142 350" stroke="#17a589" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+
+              <circle cx="390" cy="150" r="42" fill="#fff8e8" stroke="#fde2a8" stroke-width="4"/>
+              <path d="M390 128V172" stroke="#f2b84b" stroke-width="10" stroke-linecap="round"/>
+              <path d="M368 150H412" stroke="#f2b84b" stroke-width="10" stroke-linecap="round"/>
+
+              <path d="M72 98C90 72 118 56 150 56" stroke="#c8d8ff" stroke-width="6" stroke-linecap="round"/>
+              <path d="M382 408C415 404 444 388 466 360" stroke="#c8d8ff" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container">
+        <div class="section-head">
+          <h2>Quick access</h2>
+          <p>Important project links in one place.</p>
+        </div>
+
+        <div class="quick-links-grid">
+          <div class="section-card">
+            <h3>Google Drive Project</h3>
+            <p>Main project workspace and related material.</p>
+            <a class="tiny-link" href="https://drive.google.com/drive/project/1VhPPJUpKNep9JowVH6AS0nHcU0soXZgC?usp=sharing" target="_blank" rel="noopener">Open project →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>Source Files Folder</h3>
+            <p>Study resources, PDFs, notes, and supporting files.</p>
+            <a class="tiny-link" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener">Open folder →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>GitHub Repository</h3>
+            <p>Source code and website files for this project.</p>
+            <a class="tiny-link" href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener">Open repository →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>NotebookLM App</h3>
+            <p>Open the Android app from Google Play.</p>
+            <a class="tiny-link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&pcampaignid=web_share" target="_blank" rel="noopener">Open Play Store →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subjects" id="subjects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Subject notebooks</h2>
+          <p>Open each NotebookLM notebook directly.</p>
+        </div>
+
+        <div class="subject-grid">
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble bio">🧬</div>
+              <div class="count">85 sources</div>
+            </div>
+            <h3>Biology</h3>
+            <p>NotebookLM notebook and Biology-related A/L learning material.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/dea165ca-d0e1-498c-9c30-7d507296ba91" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble biz">📈</div>
+              <div class="count">70 sources</div>
+            </div>
+            <h3>Business Studies</h3>
+            <p>Business studies notebook with study sources and material.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/efde99a4-cc7a-4fed-af29-a068c70ab088" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble acc">📊</div>
+              <div class="count">170 sources</div>
+            </div>
+            <h3>Accounting</h3>
+            <p>Accounting notebook with notes, papers, and resource sources.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/cbfcb942-4227-4fc1-a6b3-da2d04df47f3" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble ict">💻</div>
+              <div class="count">85 sources</div>
+            </div>
+            <h3>ICT</h3>
+            <p>ICT notebook for computing and information technology resources.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/8ab0b251-b5a0-4b2c-8fcf-c848529b6679" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble phy">⚛️</div>
+              <div class="count">91 sources</div>
+            </div>
+            <h3>Physics</h3>
+            <p>Physics notebook with theory, papers, and supporting sources.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/59fc4342-a0c5-4357-9e6b-c50cbf2ab239" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble math">∑</div>
+              <div class="count">135 sources</div>
+            </div>
+            <h3>Combined Mathematics</h3>
+            <p>Combined Maths notebook with structured A/L study material.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/37396c97-a725-4ebb-a371-2d848d31404d" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+
+          <article class="subject-card">
+            <div class="subject-top">
+              <div class="icon-bubble chem">🧪</div>
+              <div class="count">84 sources</div>
+            </div>
+            <h3>Chemistry</h3>
+            <p>Chemistry notebook with A/L papers, notes, and study resources.</p>
+            <div class="card-actions">
+              <a class="chip-link primary" href="https://notebook.google.com/notebook/a2624626-c818-45b3-a96a-03fc28e2c213" target="_blank" rel="noopener">Open Notebook</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources" id="resources">
+      <div class="container">
+        <div class="section-head">
+          <h2>Other resources</h2>
+          <p>Useful links connected to the project.</p>
+        </div>
+
+        <div class="resources-grid">
+          <div class="section-card">
+            <h3>Study Materials Folder</h3>
+            <p>Browse source PDFs, notes, and collected files.</p>
+            <a class="tiny-link" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener">Open materials →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>Project Workspace</h3>
+            <p>Main Drive project page for this collection.</p>
+            <a class="tiny-link" href="https://drive.google.com/drive/project/1VhPPJUpKNep9JowVH6AS0nHcU0soXZgC?usp=sharing" target="_blank" rel="noopener">Open workspace →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>GitHub Pages Website</h3>
+            <p>The public landing page of the notebook project.</p>
+            <a class="tiny-link" href="https://induwaralasindu.github.io/GCE-A-L-Notebooks/" target="_blank" rel="noopener">Open website →</a>
+          </div>
+
+          <div class="section-card">
+            <h3>GitHub Source Code</h3>
+            <p>See and edit the code used for this website.</p>
+            <a class="tiny-link" href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener">Open code →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-head">
+          <h2>About this project</h2>
+          <p>Simple, organized, and easy access for A/L students.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="section-card">
+            <h3>What this website is for</h3>
+            <p>
+              This website helps students quickly access NotebookLM notebooks and study resources
+              for major GCE A/L subjects in one clean place.
+            </p>
+            <ul>
+              <li>Direct notebook access</li>
+              <li>Organized subject view</li>
+              <li>Fast access to study materials</li>
+              <li>Public and easy to share</li>
+            </ul>
+          </div>
+
+          <div class="section-card">
+            <h3>Subjects included</h3>
+            <p>
+              Biology, Business Studies, Accounting, ICT, Physics, Combined Mathematics,
+              and Chemistry.
+            </p>
+            <ul>
+              <li>NotebookLM notebooks</li>
+              <li>Drive resources</li>
+              <li>GitHub project page</li>
+              <li>Student-friendly simple layout</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-card">
+        <div>
+          <strong>GCE A/L Notebooks</strong><br />
+          <span>Google Notebook and / or Study Material For Anyone</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener">Drive</a>
+          <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&pcampaignid=web_share" target="_blank" rel="noopener">NotebookLM App</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
