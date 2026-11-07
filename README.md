@@ -6,14 +6,14 @@ A responsive, one-screen study hub for **Sri Lankan GCE Advanced Level (English-
 
 ## What you'll find
 
-Seven illustrated NotebookLM subject cards — **Biology, Business Studies, Accounting, ICT, Physics, Combined Mathematics, and Chemistry** — plus fast access to shared past papers, study notes, source materials, and the NotebookLM Android app.
+Seven NotebookLM subject cards with the original uploaded notebook covers — **Biology, Business Studies, Accounting, ICT, Physics, Combined Mathematics, and Chemistry** — plus fast access to shared past papers, study notes, source materials, and the NotebookLM Android app.
 
 ## Features
 
 - One-screen library: no page scrolling on desktop, tablet, phone portrait, or compact landscape layouts.
-- Unique illustrated subject covers made from lightweight inline SVG.
+- Original NotebookLM subject cover JPGs from the repository's `images/` folder.
 - Direct links to all seven Google NotebookLM notebooks.
-- Resource buttons for the shared Google Drive source folder, Drive project, GitHub repository, and Android app.
+- A single direct-access study materials tile linking to the shared Google Drive folder.
 - Subtle hover tilt, light/dark theme toggle, and a keyboard-accessible resources dialog.
 - Support for keyboard navigation, reduced-motion preferences, and small screens.
 - Static, single-file frontend in `index.html`. No build, framework, account, or API keys are required for the website itself.
@@ -38,7 +38,7 @@ Seven illustrated NotebookLM subject cards — **Biology, Business Studies, Acco
 
 ## Maintain this site
 
-Edit the links and subject labels directly in `index.html`. The displayed source counts are a **snapshot from 7 November 2026**, not live values from NotebookLM. If a notebook's sources change, update its card text manually.
+Edit the links and subject labels directly in `index.html`. Images live in `images/` (including `business studies.jpg` and `chemestry.jpg`). The displayed source counts are a **snapshot from 7 November 2026**, not live values from NotebookLM. If a notebook's sources change, update its card text manually.
 
 GitHub Pages publishes the site from `main` / `(root)` using `index.html`. Nothing needs to be compiled.
 
