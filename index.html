@@ -30,9 +30,9 @@
     .subject{display:block;background:var(--paper);border:1px solid rgba(255,255,255,.15);color:white;--rx:0deg;--ry:0deg}
     .subject::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent 25%,rgba(15,20,30,.07) 40%,rgba(9,14,22,.7) 72%,rgba(9,14,22,.98) 100%)}
     .subject::after{content:'';position:absolute;z-index:3;inset:-100% -45%;pointer-events:none;background:linear-gradient(106deg,transparent 46%,rgba(255,255,255,.15) 50%,transparent 54%);transform:translateX(-60%) rotate(0deg);opacity:0;transition:transform .75s,opacity .5s}
-    .subject-art{position:absolute;inset:0;width:100%;height:100%;color:var(--stroke);opacity:.93;transform:scale(1.045) translate3d(0,0,0);transform-origin:center;transition:transform .45s cubic-bezier(.17,.67,.29,1);filter:contrast(1.05)}
+    .subject-art{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;opacity:1;transform:scale(1.01) translate3d(0,0,0);transform-origin:center;transition:transform .55s cubic-bezier(.17,.67,.29,1),filter .55s;filter:saturate(.99) contrast(1.04)}
     .subject:hover,.subject:focus-visible{transform:translateY(-5px) rotateX(var(--rx)) rotateY(var(--ry));box-shadow:0 22px 60px rgba(0,0,0,.4),0 0 0 1px var(--accent);z-index:5}
-    .subject:hover .subject-art,.subject:focus-visible .subject-art{transform:scale(1.11) translate3d(0,-2%,0)}.subject:hover::after,.subject:focus-visible::after{opacity:1;transform:translateX(60%)}
+    .subject:hover .subject-art,.subject:focus-visible .subject-art{transform:scale(1.075) translate3d(0,-1%,0);filter:saturate(1.1) contrast(1.04)}.subject:hover::after,.subject:focus-visible::after{opacity:1;transform:translateX(60%)}
     .top-chip{position:absolute;top:clamp(10px,1.25vw,17px);left:clamp(10px,1.25vw,17px);z-index:2;display:flex;align-items:center;gap:5px;border:1px solid rgba(20,37,49,.1);border-radius:100px;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);padding:4px 9px;color:#223049;font-size:clamp(9px,.73vw,11px);font-weight:800;letter-spacing:.045em}
     .content{position:absolute;z-index:2;bottom:0;left:0;right:0;padding:clamp(12px,1.65vw,25px);display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
     .content h2{font:800 clamp(17px,1.65vw,26px)/1.11 'Manrope',sans-serif;letter-spacing:-.045em;margin:0 0 clamp(5px,.6vh,8px)}.content p{display:flex;gap:6px;align-items:center;white-space:nowrap;margin:0;color:rgba(245,248,255,.77);font-size:clamp(10px,.84vw,13px);font-weight:600}
@@ -54,10 +54,22 @@
     @media(max-height:710px){.app{gap:7px;padding-top:9px;padding-bottom:7px}.intro-desc{margin-top:4px}.eyebrow{margin-bottom:4px}.content{padding-bottom:10px}.top-chip{padding:2px 7px}}
     @media(max-height:540px){.app{gap:5px;padding-top:5px;padding-bottom:5px}.top{min-height:31px}.brand-icon{width:29px;height:29px}.top-link,.icon-btn{height:30px}.icon-btn{width:30px}.brand-sub{display:none}.intro-desc,.eyebrow,.foot{display:none}h1{font-size:clamp(17px,3.5vw,32px)}.content h2{margin-bottom:2px}.subject-art{opacity:.85}}
     @media(max-height:420px) and (min-width:661px){.library{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.top-chip{display:none}.content h2{font-size:15px}.resource-card{grid-column:auto;flex-direction:column;align-items:stretch}.resource-links{width:100%}.resource-top,.resource-desc{display:none}.resource-title{font-size:16px}}
-    @media(hover:none){.subject:hover,.resource-card:hover{transform:none}.subject:hover .subject-art{transform:scale(1.045)}.subject:hover::after{opacity:0}}
+    @media(hover:none){.subject:hover,.resource-card:hover{transform:none}.subject:hover .subject-art{transform:scale(1.01)}.subject:hover::after{opacity:0}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
     @keyframes reveal{from{opacity:0;translate:0 15px;filter:blur(3px)}to{opacity:1;translate:0 0;filter:blur(0)}}
     @media(prefers-reduced-motion:no-preference){.subject,.resource-card{animation:reveal .7s both;animation-delay:calc(var(--i)*55ms)}.eyebrow{animation:reveal .5s both}.intro h1{animation:reveal .6s .07s both}.intro-desc{animation:reveal .6s .12s both}}
+
+    /* Direct-only study-materials tile: one clear destination and no extra menus. */
+    .resource-direct{color:#f5f7ff;text-decoration:none;cursor:pointer}
+    .resource-direct:focus-visible{outline:3px solid #aec6ff;outline-offset:3px}
+    .resource-direct .resource-title{max-width:22ch}
+    .resource-direct .resource-desc{max-width:38ch;font-size:clamp(11px,.86vw,14px)}
+    .resource-action{display:inline-flex;align-items:center;gap:9px;align-self:flex-start;font-size:clamp(11px,.88vw,14px);font-weight:800;color:#fff;background:rgba(221,232,255,.15);border:1px solid rgba(221,232,255,.23);border-radius:12px;padding:10px 13px;transition:background .2s,transform .2s}
+    .resource-direct:hover .resource-action{background:rgba(221,232,255,.29);transform:translateX(3px)}
+    @media(max-width:1050px){.resource-direct{gap:5px}.resource-action{padding:8px 10px}}
+    @media(max-width:660px){.resource-direct{justify-content:center;gap:4px}.resource-direct .resource-title{font-size:clamp(12px,3.5vw,17px);line-height:1.16;margin:2px 0 3px}.resource-direct .resource-desc{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;font-size:clamp(8px,2.35vw,11px);line-height:1.17;max-width:none}.resource-action{display:none}}
+    @media(max-width:390px) and (max-height:620px){.resource-direct .resource-title{font-size:12px}.resource-direct .resource-desc{font-size:9px}.resource-direct .resource-top{display:none}}
+    @media(max-height:420px) and (min-width:661px){.resource-direct .resource-desc{display:none}.resource-action{padding:6px 9px}}
   </style>
 </head>
 <body>
@@ -95,70 +107,56 @@
       <span><span class="brand-name" style="display:block">GCE A/L Notebooks</span><span class="brand-sub" style="display:block">YOUR STUDY LIBRARY</span></span>
     </a>
     <nav class="top-actions" aria-label="Quick links">
-      <a class="top-link" href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><span>GitHub</span></a>
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Toggle light and dark themes"><svg class="icon" aria-hidden="true"><use id="theme-icon" href="#i-sun"/></svg></button>
-      <button class="top-link primary" type="button" data-open-resources><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg><span>Resources</span></button>
-    </nav>
+      </nav>
   </header>
   <section class="intro" aria-label="Introduction">
-    <div class="intro-left"><p class="eyebrow"><span class="dot" aria-hidden="true"></span> THE SRI LANKAN A/L STUDY COLLECTION</p><h1>Learn anything. Start here.</h1><p class="intro-desc">Seven subjects, curated learning sources, and AI-powered notebooks. Pick a subject to begin.</p></div>
+    <div class="intro-left"><p class="eyebrow"><span class="dot" aria-hidden="true"></span> THE A/L STUDY COLLECTION</p><h1>Learn anything. Start here.</h1><p class="intro-desc">Seven subjects, curated learning sources, and AI-powered notebooks. Pick a subject to begin.</p></div>
     <div class="intro-right" aria-label="Library overview"><div class="micro-stat"><strong>07</strong><span>Notebooks</span></div><span class="micro-divider"></span><div class="micro-stat"><strong>720</strong><span>Sources* </span></div></div>
   </section>
   <main class="library" id="library" aria-label="Select a subject notebook">
     <a class="subject biology" style="--i:0" href="https://notebook.google.com/notebook/dea165ca-d0e1-498c-9c30-7d507296ba91" target="_blank" rel="noopener noreferrer" aria-label="Open Biology NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".63"><use href="#cell" x="33" y="-22" transform="rotate(-13 70 20)"/><use href="#dna" x="190" y="10"/><use href="#leaf" x="310" y="23" transform="rotate(18 340 50)"/><use href="#cell" x="380" y="100" transform="rotate(25 410 140)"/><use href="#leaf" x="40" y="130" transform="rotate(-30 60 152)"/><use href="#molecule" x="250" y="140"/><use href="#dna" x="120" y="215" transform="rotate(22 130 210)"/></g><g fill="currentColor" opacity=".35"><circle cx="123" cy="104" r="6"/><circle cx="153" cy="126" r="3"/><circle cx="299" cy="100" r="7"/><circle cx="22" cy="265" r="7"/><circle cx="445" cy="25" r="6"/></g><path d="M6 121Q120 70 228 108T478 82" stroke="currentColor" stroke-width="2" stroke-dasharray="5 10" fill="none" opacity=".24"/></svg>
+      <img class="subject-art" src="./images/biology.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">LIFE SCIENCE</span><span class="content"><span><h2>Biology</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject business" style="--i:1" href="https://notebook.google.com/notebook/efde99a4-cc7a-4fed-af29-a068c70ab088" target="_blank" rel="noopener noreferrer" aria-label="Open Business Studies NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".65"><use href="#graph" x="30" y="-18"/><use href="#brief" x="263" y="11" transform="rotate(-8 303 49)"/><use href="#calc" x="386" y="115" transform="rotate(16 416 160)"/><use href="#graph" x="164" y="133" transform="rotate(-7 214 170)"/><use href="#books" x="23" y="171"/><circle cx="238" cy="60" r="37" stroke-width="2.7" fill="none"/><path d="M238 24v36l34 16M206 78h64" fill="none" stroke-width="2.7"/><path d="M380 23h68m-34-22v60M355 70h34" fill="none" stroke-width="2.4"/></g><g fill="currentColor" font-size="21" opacity=".38" font-family="sans-serif" font-weight="700"><text x="145" y="38">$</text><text x="113" y="206">%</text><text x="323" y="145">↗</text><text x="394" y="267">+</text></g></svg>
+      <img class="subject-art" src="./images/business%20studies.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">COMMERCE</span><span class="content"><span><h2>Business Studies</h2><p>70 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject accounting" style="--i:2" href="https://notebook.google.com/notebook/cbfcb942-4227-4fc1-a6b3-da2d04df47f3" target="_blank" rel="noopener noreferrer" aria-label="Open Accounting NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".63"><use href="#calc" x="29" y="17" transform="rotate(-10 65 55)"/><use href="#graph" x="182" y="-9"/><use href="#books" x="361" y="48" transform="rotate(10 394 70)"/><use href="#graph" x="75" y="166" transform="rotate(7 134 202)"/><use href="#calc" x="302" y="167" transform="rotate(14 345 204)"/><path d="M14 135h116m0-25-18 25 18 25M310 26h95m-93 30h70m-69 30h99" stroke-width="2.6" fill="none"/></g><g fill="currentColor" font-size="25" font-family="sans-serif" font-weight="700" opacity=".42"><text x="154" y="80">%</text><text x="435" y="204">$</text><text x="16" y="250">Σ</text></g></svg>
+      <img class="subject-art" src="./images/accounting.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">COMMERCE</span><span class="content"><span><h2>Accounting</h2><p>170 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject ict" style="--i:3" href="https://notebook.google.com/notebook/8ab0b251-b5a0-4b2c-8fcf-c848529b6679" target="_blank" rel="noopener noreferrer" aria-label="Open ICT NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".62"><use href="#chip" x="33" y="-2"/><use href="#network" x="232" y="10"/><use href="#chip" x="346" y="153" transform="rotate(21 392 201)"/><use href="#network" x="85" y="174" transform="rotate(-15 138 205)"/><path d="M150 48h58v-27h20M130 95h30v44h55M341 100h73v-23m-168 70h52m-273 12h49" stroke-width="2.7" fill="none"/><circle cx="215" cy="139" r="6"/><circle cx="410" cy="77" r="6"/><path d="M206 42a22 22 0 0 1 44 0m-37 8a14 14 0 0 1 30 0m-23 8a6 6 0 0 1 14 0" fill="none" stroke-width="2.5"/></g><g font-family="monospace" font-size="22" fill="currentColor" font-weight="700" opacity=".35"><text x="339" y="62">01</text><text x="14" y="258">&lt;/&gt;</text><text x="222" y="216">{ }</text></g></svg>
+      <img class="subject-art" src="./images/ict.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">TECHNOLOGY</span><span class="content"><span><h2>ICT</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject physics" style="--i:4" href="https://notebook.google.com/notebook/59fc4342-a0c5-4357-9e6b-c50cbf2ab239" target="_blank" rel="noopener noreferrer" aria-label="Open Physics NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".64"><use href="#atom" x="37" y="4" transform="rotate(17 84 46)"/><use href="#wave" x="228" y="-12"/><use href="#tri" x="363" y="67"/><use href="#atom" x="250" y="151"/><use href="#wave" x="16" y="183" transform="rotate(-9 75 220)"/><path d="M153 15v110m-30-90 30-20 30 20m-60 0 30 85 30-85M166 176h68l-33 74-35-74Zm223 35h72" stroke-width="2.4" fill="none"/></g><g fill="currentColor" opacity=".45" font-family="serif" font-size="28"><text x="158" y="112">F</text><text x="348" y="43">λ</text><text x="160" y="253">v</text><text x="429" y="265">∿</text></g></svg>
+      <img class="subject-art" src="./images/physics.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">PHYSICAL SCIENCE</span><span class="content"><span><h2>Physics</h2><p>91 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject maths" style="--i:5" href="https://notebook.google.com/notebook/37396c97-a725-4ebb-a371-2d848d31404d" target="_blank" rel="noopener noreferrer" aria-label="Open Combined Mathematics NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".62"><use href="#tri" x="28" y="9" transform="rotate(-12 76 52)"/><use href="#wave" x="226" y="9"/><use href="#graph" x="310" y="124"/><use href="#tri" x="74" y="179" transform="rotate(18 114 214)"/><circle cx="202" cy="129" r="39" fill="none" stroke-width="2.7"/><path d="M163 129h78m-39-39v78M244 182h49m-24-25v51" fill="none" stroke-width="2.7"/></g><g font-family="serif" font-style="italic" font-size="30" fill="currentColor" opacity=".44"><text x="370" y="58">∫</text><text x="140" y="67">x²</text><text x="25" y="146">π</text><text x="267" y="252">√x</text><text x="406" y="261">Σ</text></g></svg>
+      <img class="subject-art" src="./images/mathematics.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">MATHEMATICS</span><span class="content"><span><h2>Combined Maths</h2><p>135 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject chemistry" style="--i:6" href="https://notebook.google.com/notebook/a2624626-c818-45b3-a96a-03fc28e2c213" target="_blank" rel="noopener noreferrer" aria-label="Open Chemistry NotebookLM notebook">
-      <svg class="subject-art" viewBox="0 0 480 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g stroke="currentColor" opacity=".66"><use href="#flask" x="36" y="-7" transform="rotate(-13 73 45)"/><use href="#molecule" x="252" y="4"/><use href="#atom" x="360" y="107" transform="rotate(22 406 147)"/><use href="#flask" x="169" y="154" transform="rotate(12 209 191)"/><use href="#molecule" x="24" y="196"/><path d="m172 50 18-30h36l17 30-17 31h-36Zm18-30 36 61m0-61-36 61M377 20h58m-30-12v52" fill="none" stroke-width="2.6"/></g><g font-family="sans-serif" font-size="24" fill="currentColor" opacity=".45" font-weight="700"><text x="344" y="93">H₂O</text><text x="272" y="230">NaCl</text><text x="90" y="171">O₂</text></g></svg>
+      <img class="subject-art" src="./images/chemestry.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
       <span class="top-chip">PHYSICAL SCIENCE</span><span class="content"><span><h2>Chemistry</h2><p>84 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
-    <section class="resource-card" style="--i:7" aria-label="Additional study resources">
-      <div class="resource-top"><span class="resource-label">BEYOND THE NOTEBOOKS</span><span class="resource-glyph"><svg class="icon"><use href="#i-grid"/></svg></span></div>
-      <div><h2 class="resource-title">Your study toolkit.</h2><p class="resource-desc">All the resources that support your learning, just one click away.</p></div>
-      <div class="resource-links">
-        <a class="resource-link" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-folder"/></svg>Study files</a>
-        <a class="resource-link" href="https://drive.google.com/drive/project/1VhPPJUpKNep9JowVH6AS0nHcU0soXZgC?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-book"/></svg>Drive project</a>
-        <a class="resource-link" href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-code"/></svg>GitHub</a>
-        <a class="resource-link" href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-phone"/></svg>Mobile app</a>
-      </div>
-    </section>
+    <a class="resource-card resource-direct" style="--i:7" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Access study materials only in Google Drive">
+      <div class="resource-top"><span class="resource-label">STUDY MATERIALS</span><span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg></span></div>
+      <div class="resource-main"><h2 class="resource-title">Access study materials only</h2><p class="resource-desc">I want national and model papers, resources, study guides, etc. for these subjects</p></div>
+      <span class="resource-action" aria-hidden="true">Open Google Drive <svg class="icon"><use href="#i-arrow"/></svg></span>
+    </a>
   </main>
   <footer class="foot"><span class="foot-note">Made for Sri Lankan A/L students. Independent study project · Not affiliated with Google or the Department of Examinations.</span><span class="foot-right"><span title="Source counts are a snapshot as of 7 November 2026">* Source counts: 7 Nov 2026</span><a href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener noreferrer">Open source</a></span></footer>
 </div>
-<dialog id="resources-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><div class="dialog-head"><div><h2 id="dialog-title">Study resources</h2><p>Your notebooks and study materials, together.</p></div><button class="dialog-close" type="button" id="dialog-close" aria-label="Close resources"><svg class="icon"><use href="#i-close"/></svg></button></div><div class="dialog-grid">
-  <a href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>Source PDFs</strong><span>Browse past papers and guides in Drive</span></a>
-  <a href="https://drive.google.com/drive/project/1VhPPJUpKNep9JowVH6AS0nHcU0soXZgC?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>Drive project</strong><span>Open the shared project workspace</span></a>
-  <a href="https://github.com/InduwaraLasindu/GCE-A-L-Notebooks" target="_blank" rel="noopener noreferrer"><strong>GitHub</strong><span>Source code and contributions</span></a>
-  <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.labs.language.tailwind&amp;pcampaignid=web_share" target="_blank" rel="noopener noreferrer"><strong>NotebookLM app</strong><span>Study on your Android phone</span></a>
-</div><p class="dialog-footer">Some NotebookLM and Google Drive links may require a Google account and permission to access.</p></div></dialog>
 <script>
   (function(){
     const root=document.documentElement,btn=document.getElementById('theme-toggle'),icon=document.getElementById('theme-icon');
     try {if(localStorage.getItem('al-notebook-theme')==='light')root.dataset.theme='light'}catch(e){}
     function updateTheme(){const isLight=root.dataset.theme==='light';icon.setAttribute('href',isLight?'#i-moon':'#i-sun');btn.setAttribute('aria-label',isLight?'Switch to dark mode':'Switch to light mode');document.querySelector('meta[name="theme-color"]').setAttribute('content',isLight?'#e9eff8':'#0d1117')}
     updateTheme();btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('al-notebook-theme',root.dataset.theme)}catch(e){}updateTheme()});
-    const dialog=document.getElementById('resources-dialog');document.querySelectorAll('[data-open-resources]').forEach(button=>button.addEventListener('click',()=>{if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','')}));document.getElementById('dialog-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
     if(matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){document.querySelectorAll('.subject').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--ry',(x*3.6).toFixed(2)+'deg');card.style.setProperty('--rx',(-y*3.2).toFixed(2)+'deg')});card.addEventListener('pointerleave',()=>{card.style.setProperty('--ry','0deg');card.style.setProperty('--rx','0deg')})})}
   })();
 </script>
