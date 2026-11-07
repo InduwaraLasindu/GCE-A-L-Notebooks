@@ -7,8 +7,12 @@
   <meta name="color-scheme" content="dark light">
   <meta name="description" content="Seven GCE A/L English-medium NotebookLM notebooks and Sri Lankan study resources, all in one beautifully simple library.">
   <title>GCE A/L Notebook Library · Study smarter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap">
+  <link rel="preload" as="image" href="./images/biology.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="./images/business%20studies.jpg" fetchpriority="high">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
     :root{font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:dark;--bg:#0d1117;--surface:#191e27;--line:rgba(236,245,255,.1);--text:#f3f6fb;--muted:#a5b1bf;--glow:rgba(105,136,255,.18);--shadow:0 20px 60px rgba(0,0,0,.22)}
     *{box-sizing:border-box}html,body{height:100%;margin:0;overflow:hidden}body{background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
     button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #99b9ff;outline-offset:4px}
@@ -22,7 +26,7 @@
     .top-link:hover,.icon-btn:hover{background:rgba(255,255,255,.11);border-color:rgba(255,255,255,.3);transform:translateY(-1px)}.top-link.primary{background:#cddaff;color:#1b315c;border-color:transparent}.top-link.primary:hover{background:#e0e8ff}
     .icon-btn{width:39px;height:39px;display:grid;place-items:center;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:12px;transition:background .2s,transform .2s,border-color .2s}
     .icon{width:19px;height:19px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
-    .intro{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;min-width:0}.intro-left{min-width:0}.eyebrow{display:flex;align-items:center;gap:7px;text-transform:uppercase;color:#aec2e1;font-size:clamp(9px,.75vw,12px);letter-spacing:.16em;font-weight:800;margin:0 0 clamp(5px,.8vh,9px)}.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#94e2ba;box-shadow:0 0 0 4px #94e2ba14}
+    .intro{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;min-width:0}.intro-left{min-width:0}
     h1{font:800 clamp(25px,3.4vw,53px)/1.06 'Manrope',sans-serif;letter-spacing:-.055em;margin:0;max-width:1020px;text-wrap:balance}.intro-desc{margin:clamp(5px,1vh,11px) 0 0;color:var(--muted);font-size:clamp(11px,.94vw,15px);line-height:1.35}
     .intro-right{display:flex;align-items:center;gap:11px;flex-shrink:0;padding-bottom:3px}.micro-stat{display:grid;gap:0;text-align:right}.micro-stat strong{font:800 clamp(17px,1.8vw,28px)/1.12 'Manrope',sans-serif;letter-spacing:-.05em}.micro-stat span{font-size:10px;font-weight:700;letter-spacing:.055em;text-transform:uppercase;color:var(--muted)}.micro-divider{width:1px;height:30px;background:var(--line)}
     .library{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:clamp(9px,1.16vw,18px);min-height:0;min-width:0;perspective:1700px}
@@ -33,7 +37,7 @@
     .subject-art{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;opacity:1;transform:scale(1.01) translate3d(0,0,0);transform-origin:center;transition:transform .55s cubic-bezier(.17,.67,.29,1),filter .55s;filter:saturate(.99) contrast(1.04)}
     .subject:hover,.subject:focus-visible{transform:translateY(-5px) rotateX(var(--rx)) rotateY(var(--ry));box-shadow:0 22px 60px rgba(0,0,0,.4),0 0 0 1px var(--accent);z-index:5}
     .subject:hover .subject-art,.subject:focus-visible .subject-art{transform:scale(1.075) translate3d(0,-1%,0);filter:saturate(1.1) contrast(1.04)}.subject:hover::after,.subject:focus-visible::after{opacity:1;transform:translateX(60%)}
-    .top-chip{position:absolute;top:clamp(10px,1.25vw,17px);left:clamp(10px,1.25vw,17px);z-index:2;display:flex;align-items:center;gap:5px;border:1px solid rgba(20,37,49,.1);border-radius:100px;background:rgba(255,255,255,.78);backdrop-filter:blur(10px);padding:4px 9px;color:#223049;font-size:clamp(9px,.73vw,11px);font-weight:800;letter-spacing:.045em}
+    
     .content{position:absolute;z-index:2;bottom:0;left:0;right:0;padding:clamp(12px,1.65vw,25px);display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
     .content h2{font:800 clamp(17px,1.65vw,26px)/1.11 'Manrope',sans-serif;letter-spacing:-.045em;margin:0 0 clamp(5px,.6vh,8px)}.content p{display:flex;gap:6px;align-items:center;white-space:nowrap;margin:0;color:rgba(245,248,255,.77);font-size:clamp(10px,.84vw,13px);font-weight:600}
     .corner-arrow{width:clamp(29px,3vw,42px);height:clamp(29px,3vw,42px);border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);display:grid;place-items:center;flex:none;border:1px solid rgba(255,255,255,.2);transition:background .2s,transform .2s}.subject:hover .corner-arrow{background:#eff4ff;color:#1d2841;transform:rotate(-45deg)}
@@ -45,19 +49,19 @@
     .resource-links{display:grid;grid-template-columns:1fr 1fr;gap:clamp(5px,.7vw,10px)}.resource-link{min-width:0;display:flex;align-items:center;gap:7px;background:#f7faff12;border:1px solid #e4e9ff24;border-radius:clamp(8px,.8vw,12px);padding:clamp(7px,.75vw,11px);font-size:clamp(10px,.83vw,13px);font-weight:700;transition:background .2s,border-color .2s,transform .2s;white-space:nowrap}.resource-link:hover{background:#d8e4ff26;border-color:#e4e9ff75;transform:translateY(-2px)}.resource-link .icon{width:clamp(14px,1.15vw,19px);height:clamp(14px,1.15vw,19px)}
     .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;font-size:clamp(10px,.8vw,12px);font-weight:600;color:#8c98a9}.foot-note{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.foot-right{display:flex;align-items:center;gap:14px;white-space:nowrap}.foot a{transition:color .2s}.foot a:hover{color:#eff4ff}
     dialog{border:1px solid #758fbb66;color:var(--text);background:#1d2535;box-shadow:0 30px 110px #000a;border-radius:23px;padding:0;width:min(560px,calc(100vw - 28px));max-height:calc(100dvh - 26px);overflow:auto}dialog::backdrop{background:rgba(5,9,18,.68);backdrop-filter:blur(8px)}.dialog-inner{padding:clamp(20px,3vw,30px)}.dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}.dialog-head h2{font:800 27px/1.2 'Manrope',sans-serif;letter-spacing:-.035em;margin:0 0 5px}.dialog-head p{font-size:14px;margin:0 0 20px;color:var(--muted)}.dialog-close{border:1px solid #ffffff29;background:#ffffff12;border-radius:10px;padding:7px;display:grid;place-items:center}.dialog-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.dialog-grid a{border:1px solid #ffffff21;background:#ffffff0e;padding:14px;border-radius:13px;display:grid;gap:5px;transition:background .2s}.dialog-grid a:hover{background:#ffffff1b}.dialog-grid strong{font-size:14px}.dialog-grid span{font-size:12px;color:#afbbcd}.dialog-footer{font-size:12px;color:#a9b5c9;margin:18px 0 0}
-    html[data-theme='light']{color-scheme:light;--bg:#e9eff8;--surface:#fff;--line:#25375a24;--text:#1d2940;--muted:#53657f;--shadow:0 18px 55px #637ba526}html[data-theme='light'] .brand-icon{background:#263a61;color:#fff}html[data-theme='light'] .top-link,html[data-theme='light'] .icon-btn{background:#ffffff9c}html[data-theme='light'] .top-link.primary{background:#28467e;color:#fff}html[data-theme='light'] .eyebrow{color:#506b9f}html[data-theme='light'] .foot{color:#52617a}html[data-theme='light'] dialog{color:#202e44;background:#f8fbff;border-color:#b1c0d8}html[data-theme='light'] .dialog-grid a{background:#e8eef7;border-color:#c6d4e4}html[data-theme='light'] .dialog-grid span,html[data-theme='light'] .dialog-head p,html[data-theme='light'] .dialog-footer{color:#55647d}html[data-theme='light'] .dialog-close{background:#e6ecf6;border-color:#c4d2e3}
+    html[data-theme='light']{color-scheme:light;--bg:#e9eff8;--surface:#fff;--line:#25375a24;--text:#1d2940;--muted:#53657f;--shadow:0 18px 55px #637ba526}html[data-theme='light'] .brand-icon{background:#263a61;color:#fff}html[data-theme='light'] .top-link,html[data-theme='light'] .icon-btn{background:#ffffff9c}html[data-theme='light'] .top-link.primary{background:#28467e;color:#fff}html[data-theme='light'] html[data-theme='light'] .foot{color:#52617a}html[data-theme='light'] dialog{color:#202e44;background:#f8fbff;border-color:#b1c0d8}html[data-theme='light'] .dialog-grid a{background:#e8eef7;border-color:#c6d4e4}html[data-theme='light'] .dialog-grid span,html[data-theme='light'] .dialog-head p,html[data-theme='light'] .dialog-footer{color:#55647d}html[data-theme='light'] .dialog-close{background:#e6ecf6;border-color:#c4d2e3}
     /* Fit all seven subjects and the resources tile within a single viewport. */
     @media(max-width:1050px){.library{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr))}.resource-card{grid-column:span 2}.content h2{font-size:clamp(16px,2.2vw,23px)}.intro-right{display:none}.resource-card{flex-direction:row;align-items:center}.resource-links{width:min(58%,470px)}.resource-top{display:none}}
-    @media(max-width:660px){.app{padding:12px 12px 10px;gap:9px}.top{min-height:34px}.brand-icon{width:34px;height:34px;border-radius:11px}.brand-name{font-size:14px;letter-spacing:-.04em}.brand-sub{font-size:9px;margin-top:2px}.top-link{height:34px;padding:0 9px;font-size:11px}.top-link span{display:none}.icon-btn{width:34px;height:34px}.intro{align-items:flex-start}.eyebrow{font-size:9px;margin-bottom:5px}h1{font-size:clamp(22px,5.4vw,34px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.intro-desc{font-size:11px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.library{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:8px}.content{padding:11px}.content h2{font-size:clamp(13px,3.7vw,18px);letter-spacing:-.04em;margin:0 0 3px;line-height:1.1}.content p{font-size:10px;white-space:nowrap}.desktop-tag{display:none}.corner-arrow{width:24px;height:24px}.corner-arrow .icon{width:14px;height:14px}.top-chip{font-size:9px;top:8px;left:8px;padding:2px 7px}.resource-card{grid-column:auto;flex-direction:column;align-items:stretch;padding:11px;gap:2px;justify-content:space-around}.resource-top{display:flex}.resource-glyph{display:none}.resource-title{font-size:clamp(13px,3.6vw,17px);margin:0}.resource-desc{display:none}.resource-label{font-size:9px}.resource-links{width:100%;gap:5px}.resource-link{padding:5px 6px;font-size:10px;gap:4px}.resource-link .icon{width:12px;height:12px}.foot{font-size:10px}.foot-right{gap:8px}.foot-right a:last-child{display:none}}
+    @media(max-width:660px){.app{padding:12px 12px 10px;gap:9px}.top{min-height:34px}.brand-icon{width:34px;height:34px;border-radius:11px}.brand-name{font-size:14px;letter-spacing:-.04em}.brand-sub{font-size:9px;margin-top:2px}.top-link{height:34px;padding:0 9px;font-size:11px}.top-link span{display:none}.icon-btn{width:34px;height:34px}.intro{align-items:flex-start}h1{font-size:clamp(22px,5.4vw,34px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.intro-desc{font-size:11px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.library{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,minmax(0,1fr));gap:8px}.content{padding:11px}.content h2{font-size:clamp(13px,3.7vw,18px);letter-spacing:-.04em;margin:0 0 3px;line-height:1.1}.content p{font-size:10px;white-space:nowrap}.desktop-tag{display:none}.corner-arrow{width:24px;height:24px}.corner-arrow .icon{width:14px;height:14px}.resource-card{grid-column:auto;flex-direction:column;align-items:stretch;padding:11px;gap:2px;justify-content:space-around}.resource-top{display:flex}.resource-glyph{display:none}.resource-title{font-size:clamp(13px,3.6vw,17px);margin:0}.resource-desc{display:none}.resource-label{font-size:9px}.resource-links{width:100%;gap:5px}.resource-link{padding:5px 6px;font-size:10px;gap:4px}.resource-link .icon{width:12px;height:12px}.foot{font-size:10px}.foot-right{gap:8px}.foot-right a:last-child{display:none}}
     @media(max-width:390px){.brand-name{font-size:12px}.top-actions{gap:5px}.top-link{padding:0 8px}.content{padding:8px}.content h2{font-size:clamp(12px,3.7vw,16px)}.content p{font-size:9px}.corner-arrow{width:22px;height:22px}.resource-card{padding:9px}.resource-link{font-size:9px;padding:5px 4px}}
     @media(max-width:390px) and (max-height:620px){.resource-top{display:none}.resource-card{justify-content:center;gap:5px}.resource-title{font-size:12px}.resource-links{gap:4px}.resource-link{padding:4px 3px;font-size:8px}.resource-link .icon{width:11px;height:11px}}
-    @media(max-height:710px){.app{gap:7px;padding-top:9px;padding-bottom:7px}.intro-desc{margin-top:4px}.eyebrow{margin-bottom:4px}.content{padding-bottom:10px}.top-chip{padding:2px 7px}}
+    @media(max-height:710px){.app{gap:7px;padding-top:9px;padding-bottom:7px}.intro-desc{margin-top:4px}.content{padding-bottom:10px}}
     @media(max-height:540px){.app{gap:5px;padding-top:5px;padding-bottom:5px}.top{min-height:31px}.brand-icon{width:29px;height:29px}.top-link,.icon-btn{height:30px}.icon-btn{width:30px}.brand-sub{display:none}.intro-desc,.eyebrow,.foot{display:none}h1{font-size:clamp(17px,3.5vw,32px)}.content h2{margin-bottom:2px}.subject-art{opacity:.85}}
-    @media(max-height:420px) and (min-width:661px){.library{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.top-chip{display:none}.content h2{font-size:15px}.resource-card{grid-column:auto;flex-direction:column;align-items:stretch}.resource-links{width:100%}.resource-top,.resource-desc{display:none}.resource-title{font-size:16px}}
+    @media(max-height:420px) and (min-width:661px){.library{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr))}.content h2{font-size:15px}.resource-card{grid-column:auto;flex-direction:column;align-items:stretch}.resource-links{width:100%}.resource-top,.resource-desc{display:none}.resource-title{font-size:16px}}
     @media(hover:none){.subject:hover,.resource-card:hover{transform:none}.subject:hover .subject-art{transform:scale(1.01)}.subject:hover::after{opacity:0}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
     @keyframes reveal{from{opacity:0;translate:0 15px;filter:blur(3px)}to{opacity:1;translate:0 0;filter:blur(0)}}
-    @media(prefers-reduced-motion:no-preference){.subject,.resource-card{animation:reveal .7s both;animation-delay:calc(var(--i)*55ms)}.eyebrow{animation:reveal .5s both}.intro h1{animation:reveal .6s .07s both}.intro-desc{animation:reveal .6s .12s both}}
+    @media(prefers-reduced-motion:no-preference){.subject,.resource-card{animation:reveal .7s both;animation-delay:calc(var(--i)*55ms)}.intro h1{animation:reveal .6s .07s both}.intro-desc{animation:reveal .6s .12s both}}
 
     /* Direct-only study-materials tile: one clear destination and no extra menus. */
     .resource-direct{color:#f5f7ff;text-decoration:none;cursor:pointer}
@@ -79,25 +83,6 @@
   <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9H3Z"/></symbol>
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 15.5A8.5 8.5 0 0 1 8.5 4 8.5 8.5 0 1 0 20 15.5Z"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
-  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5m-7-13-4 16"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol>
-  <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
-  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
-  <!-- Compact educational doodle motifs, repeated in the cover compositions. -->
-  <g id="dna" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><path d="M3 0C40 16 6 43 43 62M43 0C6 16 40 43 3 62"/><path d="M9 5h28M17 15h12M18 26h10M10 37h27M10 48h27M19 59h8"/></g>
-  <g id="leaf" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M0 51C-9 16 17 -8 55 2c-2 29-25 49-55 49Z"/><path d="M0 51C16 27 33 15 53 5m-29 24-1-17M34 21l10 2"/></g>
-  <g id="cell" fill="none" stroke="currentColor" stroke-width="2.7"><path d="M14 6C48-8 71 13 71 43s-38 49-61 26S-10 16 14 6Z"/><ellipse cx="39" cy="40" rx="17" ry="15"/><circle cx="45" cy="36" r="4"/><path d="m9 36 8-4m5 33 7-8m27-3 7 4"/></g>
-  <g id="molecule" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 34 37 10 70 30 62 65 26 72Z"/><circle cx="12" cy="34" r="8"/><circle cx="37" cy="10" r="7"/><circle cx="70" cy="30" r="9"/><circle cx="62" cy="65" r="8"/><circle cx="26" cy="72" r="6"/></g>
-  <g id="atom" fill="none" stroke="currentColor" stroke-width="2.5"><ellipse cx="48" cy="42" rx="44" ry="16"/><ellipse cx="48" cy="42" rx="44" ry="16" transform="rotate(60 48 42)"/><ellipse cx="48" cy="42" rx="44" ry="16" transform="rotate(120 48 42)"/><circle cx="48" cy="42" r="7" fill="currentColor" stroke="none"/></g>
-  <g id="flask" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><path d="M23 0h29M30 0v29L8 74q-5 11 8 11h46q13 0 8-11L47 29V0M19 59h42M30 68h4m13 9h4"/><path d="M23 59q13 11 29 0"/></g>
-  <g id="calc" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="3" y="3" width="65" height="83" rx="7"/><rect x="12" y="13" width="47" height="19" rx="3"/><path d="M13 45h8m13 0h8m12 0h7M13 58h8m13 0h8m12 0h7M13 72h8m13 0h8m12-7v14"/></g>
-  <g id="graph" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M1 1v85h105"/><path d="M9 67 33 48l23 12 20-39 22-10"/><path d="m81 11 17 0 0 16"/></g>
-  <g id="brief" fill="none" stroke="currentColor" stroke-width="2.8"><rect x="3" y="21" width="92" height="60" rx="6"/><path d="M33 21V7h32v14M3 42q46 28 92 0M46 53h8"/></g>
-  <g id="chip" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linejoin="round"><rect x="22" y="22" width="56" height="56" rx="7"/><rect x="35" y="35" width="30" height="30" rx="3"/><path d="M32 8v14m20-14v14m20-14v14M32 78v14m20-14v14m20-14v14M8 32h14M8 52h14M8 72h14M78 32h14M78 52h14M78 72h14"/></g>
-  <g id="network" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 10 43 19 36-19m-36 19v42M6 10 19 74l30-3 35-16V10m-65 64 65-19"/><circle cx="6" cy="10" r="7"/><circle cx="49" cy="29" r="8"/><circle cx="85" cy="10" r="7"/><circle cx="19" cy="74" r="6"/><circle cx="49" cy="71" r="6"/><circle cx="84" cy="55" r="7"/></g>
-  <g id="tri" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M10 75 47 5l45 70Z"/><path d="M47 5v70m-9 0a12 12 0 0 0-11-11m36 11a16 16 0 0 1 9-14"/></g>
-  <g id="wave" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M0 42h116M0 9v73M4 42c18-65 40-65 55 0s39 65 56 0"/></g>
-  <g id="books" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="18" width="21" height="72" rx="3"/><rect x="29" y="10" width="24" height="80" rx="3"/><path d="M36 27h10M36 75h10M9 34h8M8 76h11"/><path d="m59 18 20-4 15 70-21 4Z"/></g>
 </defs></svg>
 
 <div class="app">
@@ -111,37 +96,37 @@
       </nav>
   </header>
   <section class="intro" aria-label="Introduction">
-    <div class="intro-left"><p class="eyebrow"><span class="dot" aria-hidden="true"></span> THE A/L STUDY COLLECTION</p><h1>Learn anything. Start here.</h1><p class="intro-desc">Seven subjects, curated learning sources, and AI-powered notebooks. Pick a subject to begin.</p></div>
+    <div class="intro-left"><h1>Learn anything. Start here.</h1><p class="intro-desc">Pick a subject to begin.</p></div>
     <div class="intro-right" aria-label="Library overview"><div class="micro-stat"><strong>07</strong><span>Notebooks</span></div><span class="micro-divider"></span><div class="micro-stat"><strong>720</strong><span>Sources* </span></div></div>
   </section>
   <main class="library" id="library" aria-label="Select a subject notebook">
     <a class="subject biology" style="--i:0" href="https://notebook.google.com/notebook/dea165ca-d0e1-498c-9c30-7d507296ba91" target="_blank" rel="noopener noreferrer" aria-label="Open Biology NotebookLM notebook">
-      <img class="subject-art" src="./images/biology.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">LIFE SCIENCE</span><span class="content"><span><h2>Biology</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <img class="subject-art" src="./images/biology.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager" fetchpriority="high">
+      <span class="content"><span><h2>Biology</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject business" style="--i:1" href="https://notebook.google.com/notebook/efde99a4-cc7a-4fed-af29-a068c70ab088" target="_blank" rel="noopener noreferrer" aria-label="Open Business Studies NotebookLM notebook">
-      <img class="subject-art" src="./images/business%20studies.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">COMMERCE</span><span class="content"><span><h2>Business Studies</h2><p>70 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <img class="subject-art" src="./images/business%20studies.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager" fetchpriority="high">
+      <span class="content"><span><h2>Business Studies</h2><p>70 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject accounting" style="--i:2" href="https://notebook.google.com/notebook/cbfcb942-4227-4fc1-a6b3-da2d04df47f3" target="_blank" rel="noopener noreferrer" aria-label="Open Accounting NotebookLM notebook">
       <img class="subject-art" src="./images/accounting.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">COMMERCE</span><span class="content"><span><h2>Accounting</h2><p>170 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <span class="content"><span><h2>Accounting</h2><p>170 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject ict" style="--i:3" href="https://notebook.google.com/notebook/8ab0b251-b5a0-4b2c-8fcf-c848529b6679" target="_blank" rel="noopener noreferrer" aria-label="Open ICT NotebookLM notebook">
       <img class="subject-art" src="./images/ict.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">TECHNOLOGY</span><span class="content"><span><h2>ICT</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <span class="content"><span><h2>ICT</h2><p>85 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject physics" style="--i:4" href="https://notebook.google.com/notebook/59fc4342-a0c5-4357-9e6b-c50cbf2ab239" target="_blank" rel="noopener noreferrer" aria-label="Open Physics NotebookLM notebook">
       <img class="subject-art" src="./images/physics.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">PHYSICAL SCIENCE</span><span class="content"><span><h2>Physics</h2><p>91 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <span class="content"><span><h2>Physics</h2><p>91 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject maths" style="--i:5" href="https://notebook.google.com/notebook/37396c97-a725-4ebb-a371-2d848d31404d" target="_blank" rel="noopener noreferrer" aria-label="Open Combined Mathematics NotebookLM notebook">
       <img class="subject-art" src="./images/mathematics.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">MATHEMATICS</span><span class="content"><span><h2>Combined Maths</h2><p>135 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <span class="content"><span><h2>Combined Maths</h2><p>135 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="subject chemistry" style="--i:6" href="https://notebook.google.com/notebook/a2624626-c818-45b3-a96a-03fc28e2c213" target="_blank" rel="noopener noreferrer" aria-label="Open Chemistry NotebookLM notebook">
       <img class="subject-art" src="./images/chemestry.jpg" alt="" aria-hidden="true" draggable="false" decoding="async" loading="eager">
-      <span class="top-chip">PHYSICAL SCIENCE</span><span class="content"><span><h2>Chemistry</h2><p>84 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
+      <span class="content"><span><h2>Chemistry</h2><p>84 sources <span class="desktop-tag" aria-hidden="true">· NotebookLM</span></p></span><span class="corner-arrow"><svg class="icon"><use href="#i-arrow"/></svg></span></span>
     </a>
     <a class="resource-card resource-direct" style="--i:7" href="https://drive.google.com/drive/folders/1L8YZDaDUEoWW2xLT43SOMfIewI86sNBL?usp=sharing" target="_blank" rel="noopener noreferrer" aria-label="Access study materials only in Google Drive">
       <div class="resource-top"><span class="resource-label">STUDY MATERIALS</span><span class="resource-glyph"><svg class="icon" aria-hidden="true"><use href="#i-folder"/></svg></span></div>
@@ -157,7 +142,23 @@
     try {if(localStorage.getItem('al-notebook-theme')==='light')root.dataset.theme='light'}catch(e){}
     function updateTheme(){const isLight=root.dataset.theme==='light';icon.setAttribute('href',isLight?'#i-moon':'#i-sun');btn.setAttribute('aria-label',isLight?'Switch to dark mode':'Switch to light mode');document.querySelector('meta[name="theme-color"]').setAttribute('content',isLight?'#e9eff8':'#0d1117')}
     updateTheme();btn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';try{localStorage.setItem('al-notebook-theme',root.dataset.theme)}catch(e){}updateTheme()});
-    if(matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){document.querySelectorAll('.subject').forEach(card=>{card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.setProperty('--ry',(x*3.6).toFixed(2)+'deg');card.style.setProperty('--rx',(-y*3.2).toFixed(2)+'deg')});card.addEventListener('pointerleave',()=>{card.style.setProperty('--ry','0deg');card.style.setProperty('--rx','0deg')})})}
+    // Limit 3D-tilt style updates to the browser's animation frame rate.
+    if(matchMedia('(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference)').matches){
+      document.querySelectorAll('.subject').forEach(card=>{
+        let raf=0,x=0,y=0;
+        card.addEventListener('pointermove',event=>{
+          const rect=card.getBoundingClientRect(); x=(event.clientX-rect.left)/rect.width-.5; y=(event.clientY-rect.top)/rect.height-.5;
+          if(raf)return;
+          raf=requestAnimationFrame(()=>{
+            card.style.setProperty('--ry',(x*3.6).toFixed(2)+'deg');
+            card.style.setProperty('--rx',(-y*3.2).toFixed(2)+'deg');
+            raf=0;
+          });
+        },{passive:true});
+        function reset(){if(raf)cancelAnimationFrame(raf);raf=0;card.style.setProperty('--ry','0deg');card.style.setProperty('--rx','0deg')}
+        card.addEventListener('pointerleave',reset);card.addEventListener('pointercancel',reset);
+      });
+    }
   })();
 </script>
 </body>
